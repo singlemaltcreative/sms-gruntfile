@@ -93,6 +93,6 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask('default', ['browserSync', 'watch']);
 
-	grunt.registerTask('compile', ['uglify', 'sass']);
+	grunt.registerTask('compile', ['concat', 'uglify', 'sass']);
 
 };
