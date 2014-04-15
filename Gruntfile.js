@@ -3,6 +3,7 @@
 var LIVERELOAD_PORT = 35729;
 var currIP;
 var vHost = 'YOURHOST';
+var projectRoot = 'PATH/TO/ROOT'; // !IMPORTANT include trailing slash /
 
 module.exports = function(grunt) {
 
