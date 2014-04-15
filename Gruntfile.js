@@ -1,10 +1,32 @@
 'use strict';
 
 var LIVERELOAD_PORT = 35729;
-var currIP = '192.168.1.117';
-var vHost = 'myfi.dev';
+var currIP;
+var vHost = 'YOURHOST';
 
 module.exports = function(grunt) {
+
+	var os=require('os');
+	var ifaces=os.networkInterfaces();
+	var lookupIpAddress = null;
+	for (var dev in ifaces) {
+		if(dev != 'en1' && dev != 'en0') {
+			continue;
+		}
+		ifaces[dev].forEach(function(details){
+			if (details.family=='IPv4') {
+				lookupIpAddress = details.address;
+				return;
+			}
+		});
+	}
+
+	// http://jbavari.github.io/blog/2013/12/04/automating-local-ip-lookup-with-grunt-and-node/
+	//If an IP Address is passed
+	//we're going to use the ip/host from the param
+	//passed over the command line 
+	//over the ip addressed that was looked up
+	currIP = grunt.option('host') || lookupIpAddress;	
 	
 	require('time-grunt')(grunt);
 	require('jit-grunt')(grunt);
