@@ -1,8 +1,11 @@
 'use strict';
 
+// set vars
 var LIVERELOAD_PORT = 35729;
 var currIP;
+// your local host ex: mysite.dev
 var vHost = 'YOURHOST';
+// path to root, see comment
 var projectRoot = 'PATH/TO/ROOT'; // !IMPORTANT include trailing slash /
 
 module.exports = function(grunt) {
@@ -29,7 +32,11 @@ module.exports = function(grunt) {
 	//over the ip addressed that was looked up
 	currIP = grunt.option('host') || lookupIpAddress;	
 	
+	// https://github.com/sindresorhus/time-grunt
+	// displays execution times of grunt tasks
 	require('time-grunt')(grunt);
+	// https://github.com/shootaroo/jit-grunt
+	// simplify inclusion of grunt plugins and packages
 	require('jit-grunt')(grunt);
 
 	grunt.initConfig({
